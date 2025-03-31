@@ -1,4 +1,3 @@
-import time
 
 #zlozonosc O(1):
 def stala(n):
@@ -29,7 +28,6 @@ def kwadratowa(n):
     return steps
 
 
-
 def run_algorithms():
     sizes = [10, 1000, 10000]  
     algorithms = [stala, liniowa, kwadratowa]
@@ -38,11 +36,58 @@ def run_algorithms():
     for algorithm in algorithms:
         results[algorithm.__name__] = []
         for size in sizes:
-            #start_time = time.time()
             steps = algorithm(size)
-            #duration = time.time() - start_time
-            results[algorithm.__name__].append((size, steps)) #,duration))
+            results[algorithm.__name__].append((size, steps))
     print(results)
     return results
 
 run_algorithms()
+
+
+#zlozonosc wykladnicza O(a^n) -- przyklad: obliczanie m-tej liczby ciagu fibonacciego
+    #przeskalowano wartosci m={10, 20, 35}
+
+stepsf = 0
+m = 10
+def fibonacci_with_counter(m):
+    global stepsf
+    stepsf += 1  
+    if m <= 1:
+        return m
+    return fibonacci_with_counter(m - 1) + fibonacci_with_counter(m - 2)
+
+
+result = fibonacci_with_counter(m)
+
+print(f"m: {m})")
+print(f"Liczba kroków: {stepsf}")
+
+stepsf = 0
+mm = 20
+def fibonacci_with_counter(mm):
+    global stepsf
+    stepsf += 1  
+    if mm <= 1:
+        return mm
+    return fibonacci_with_counter(mm - 1) + fibonacci_with_counter(mm - 2)
+
+
+result = fibonacci_with_counter(mm)
+
+print(f"m: {mm})")
+print(f"Liczba kroków: {stepsf}")
+
+stepsf = 0
+mmm=35
+def fibonacci_with_counter(mmm):
+    global stepsf
+    stepsf += 1  
+    if mmm <= 1:
+        return mmm
+    return fibonacci_with_counter(mmm - 1) + fibonacci_with_counter(mmm - 2)
+
+
+result = fibonacci_with_counter(mmm)
+
+print(f"m: {mmm})")
+print(f"Liczba kroków: {stepsf}")
